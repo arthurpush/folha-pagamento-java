@@ -1,18 +1,38 @@
-## Getting Started
+# Sistema de Folha de Pagamento em Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Projeto desenvolvido para a UC de Algoritmos e Programação.
 
-## Folder Structure
+## Objetivo
 
-The workspace contains two folders by default, where:
+Sistema de console em Java para cadastro de colaboradores e geração de folha de pagamento.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Funcionalidades
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+* Cadastro de Funcionário Padrão
+* Cadastro de Funcionário Comissionado
+* Cadastro de Funcionário Produção
+* Geração da folha de pagamento
+* Cálculo automático dos salários
+* Armazenamento dos colaboradores utilizando ArrayList
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Tecnologias Utilizadas
 
-## Dependency Management
+* Java
+* VS Code
+* Git
+* GitHub
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Conceitos Aplicados
+
+* Classes e Objetos
+* Métodos
+* Scanner
+* ArrayList
+* Estruturas Condicionais
+* Estruturas de Repetição
+* Encapsulamento
+* Constantes
+
+## Autor
+
+Arthur Araujo
