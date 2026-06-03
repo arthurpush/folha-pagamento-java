@@ -4,7 +4,7 @@ public class Funcionario {
     public static final int COMISSIONADO = 2;
     public static final int PRODUCAO = 3;
 
-    public static final double SALARIO_FIXO = 1500.00;
+    public static final double SALARIO_BASE = 2000.00;
 
     private final int matricula;
     private final String nome;
@@ -13,11 +13,13 @@ public class Funcionario {
     private double vendas;
     private double percentualComissao;
 
-    private int quantidadePecas;
+    private int quantidadeProduzida;
     private double valorPeca;
 
-    public Funcionario(int matricula, String nome, int tipo) {
-        validarDados(matricula, nome);
+    public Funcionario(
+            int matricula,
+            String nome,
+            int tipo) {
 
         this.matricula = matricula;
         this.nome = nome;
@@ -31,8 +33,6 @@ public class Funcionario {
             double vendas,
             double percentualComissao) {
 
-        validarDados(matricula, nome);
-
         this.matricula = matricula;
         this.nome = nome;
         this.tipo = tipo;
@@ -44,56 +44,52 @@ public class Funcionario {
             int matricula,
             String nome,
             int tipo,
-            int quantidadePecas,
+            int quantidadeProduzida,
             double valorPeca) {
-
-        validarDados(matricula, nome);
 
         this.matricula = matricula;
         this.nome = nome;
         this.tipo = tipo;
-        this.quantidadePecas = quantidadePecas;
+        this.quantidadeProduzida = quantidadeProduzida;
         this.valorPeca = valorPeca;
-    }
-
-    private void validarDados(int matricula, String nome) {
-
-        if (matricula <= 0) {
-            throw new IllegalArgumentException("Matrícula inválida.");
-        }
-
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido.");
-        }
     }
 
     public double calcularExtra() {
 
-        return switch (tipo) {
+        switch (tipo) {
 
-            case COMISSIONADO ->
-                vendas * percentualComissao / 100;
+            case COMISSIONADO:
+                return vendas * percentualComissao / 100;
 
-            case PRODUCAO ->
-                quantidadePecas * valorPeca;
+            case PRODUCAO:
+                return quantidadeProduzida * valorPeca;
 
-            default -> 0;
-        };
+            default:
+                return 0;
+        }
     }
 
     public double calcularSalarioFinal() {
-        return SALARIO_FIXO + calcularExtra();
+
+        return SALARIO_BASE + calcularExtra();
     }
 
     public String getTipoDescricao() {
 
-        return switch (tipo) {
+        switch (tipo) {
 
-            case PADRAO -> "Padrão";
-            case COMISSIONADO -> "Comissionado";
-            case PRODUCAO -> "Produção";
-            default -> "Desconhecido";
-        };
+            case PADRAO:
+                return "Padrão";
+
+            case COMISSIONADO:
+                return "Comissionado";
+
+            case PRODUCAO:
+                return "Produção";
+
+            default:
+                return "Desconhecido";
+        }
     }
 
     public int getMatricula() {

@@ -1,10 +1,9 @@
-
 /*
  * Projeto: Sistema de Folha de Pagamento
- * Disciplina: ALGORITMOS E PROGRAMAÇÃO
+ * Disciplina: Algoritmos e Programação
  * Autor: Arthur Araujo Soares
- * Data: 01/06/2026
  */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +19,7 @@ public class Main {
         do {
 
             exibirMenu();
+
             opcao = sc.nextInt();
             sc.nextLine();
 
@@ -49,15 +49,26 @@ public class Main {
         System.out.println("1 - Funcionário Padrão");
         System.out.println("2 - Funcionário Comissionado");
         System.out.println("3 - Funcionário Produção");
-        System.out.println("4 - Gerar Folha");
+        System.out.println("4 - Gerar Folha de Pagamento");
         System.out.println("0 - Sair");
         System.out.print("Escolha: ");
     }
 
     private static String lerNome() {
 
-        System.out.print("Nome: ");
-        return sc.nextLine();
+        String nome;
+
+        do {
+            System.out.print("Nome completo: ");
+            nome = sc.nextLine();
+
+            if (nome.isBlank()) {
+                System.out.println("Nome inválido.");
+            }
+
+        } while (nome.isBlank());
+
+        return nome;
     }
 
     private static int lerMatricula() {
@@ -78,7 +89,6 @@ public class Main {
         for (Funcionario funcionario : funcionarios) {
 
             if (funcionario.getMatricula() == matricula) {
-
                 System.out.println("Matrícula já cadastrada.");
                 return lerMatricula();
             }
@@ -98,7 +108,7 @@ public class Main {
                         nome,
                         Funcionario.PADRAO));
 
-        System.out.println("Funcionário cadastrado.");
+        System.out.println("Funcionário padrão cadastrado.");
     }
 
     private static void cadastrarComissionado() {
@@ -106,11 +116,29 @@ public class Main {
         String nome = lerNome();
         int matricula = lerMatricula();
 
-        System.out.print("Valor das vendas: ");
-        double vendas = sc.nextDouble();
+        double vendas;
 
-        System.out.print("Percentual da comissão: ");
-        double percentual = sc.nextDouble();
+        do {
+            System.out.print("Valor das vendas: ");
+            vendas = sc.nextDouble();
+
+            if (vendas < 0) {
+                System.out.println("Valor inválido.");
+            }
+
+        } while (vendas < 0);
+
+        double percentual;
+
+        do {
+            System.out.print("Percentual de comissão: ");
+            percentual = sc.nextDouble();
+
+            if (percentual < 0) {
+                System.out.println("Percentual inválido.");
+            }
+
+        } while (percentual < 0);
 
         funcionarios.add(
                 new Funcionario(
@@ -120,7 +148,7 @@ public class Main {
                         vendas,
                         percentual));
 
-        System.out.println("Funcionário cadastrado.");
+        System.out.println("Funcionário comissionado cadastrado.");
     }
 
     private static void cadastrarProducao() {
@@ -128,11 +156,29 @@ public class Main {
         String nome = lerNome();
         int matricula = lerMatricula();
 
-        System.out.print("Quantidade de peças: ");
-        int quantidade = sc.nextInt();
+        int quantidade;
 
-        System.out.print("Valor por peça: ");
-        double valorPeca = sc.nextDouble();
+        do {
+            System.out.print("Quantidade produzida: ");
+            quantidade = sc.nextInt();
+
+            if (quantidade < 0) {
+                System.out.println("Quantidade inválida.");
+            }
+
+        } while (quantidade < 0);
+
+        double valorPeca;
+
+        do {
+            System.out.print("Valor por peça: ");
+            valorPeca = sc.nextDouble();
+
+            if (valorPeca < 0) {
+                System.out.println("Valor inválido.");
+            }
+
+        } while (valorPeca < 0);
 
         funcionarios.add(
                 new Funcionario(
@@ -142,23 +188,48 @@ public class Main {
                         quantidade,
                         valorPeca));
 
-        System.out.println("Funcionário cadastrado.");
+        System.out.println("Funcionário de produção cadastrado.");
     }
 
     private static void gerarFolha() {
 
         System.out.println("\n===== FOLHA DE PAGAMENTO =====");
 
+        if (funcionarios.isEmpty()) {
+
+            System.out.println("Nenhum funcionário cadastrado.");
+            return;
+
+        } else if (funcionarios.size() == 1) {
+
+            System.out.println("Total de funcionários: 1");
+
+        } else {
+
+            System.out.println(
+                    "Total de funcionários: "
+                            + funcionarios.size());
+        }
+
         for (Funcionario funcionario : funcionarios) {
 
             System.out.println("\n----------------------------");
-            System.out.println("Nome: " + funcionario.getNome());
-            System.out.println("Matrícula: " + funcionario.getMatricula());
-            System.out.println("Tipo: " + funcionario.getTipoDescricao());
+
+            System.out.println(
+                    "Nome: "
+                            + funcionario.getNome());
+
+            System.out.println(
+                    "Matrícula: "
+                            + funcionario.getMatricula());
+
+            System.out.println(
+                    "Tipo: "
+                            + funcionario.getTipoDescricao());
 
             System.out.printf(
-                    "Salário Fixo: R$ %.2f%n",
-                    Funcionario.SALARIO_FIXO);
+                    "Salário Base: R$ %.2f%n",
+                    Funcionario.SALARIO_BASE);
 
             System.out.printf(
                     "Extras: R$ %.2f%n",
