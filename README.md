@@ -1,41 +1,75 @@
 # 💰 Sistema de Folha de Pagamento em Java
 
-Projeto desenvolvido para a UC de Algoritmos e Programação.
+Projeto desenvolvido para a disciplina de Algoritmos e Programação.
 
-## Objetivo
+## 📌 Objetivo
 
-Desenvolver um sistema de console em Java para cadastro de colaboradores e geração automática da folha de pagamento, aplicando conceitos de Programação Orientada a Objetos (POO).
+Desenvolver um sistema de console em Java para cadastro de colaboradores e geração automática da folha de pagamento, aplicando conceitos fundamentais de programação e Programação Orientada a Objetos (POO).
 
-## Funcionalidades
+## 🚀 Funcionalidades
 
 * Cadastro de Funcionário Padrão
 * Cadastro de Funcionário Comissionado
-* Cadastro de Funcionário Produção
+* Cadastro de Funcionário de Produção
 * Geração da folha de pagamento
-* Cálculo automático dos salários
-* Validação de dados
+* Cálculo automático de salários e adicionais
+* Validação de dados de entrada
+* Controle de matrícula duplicada
 * Armazenamento dos colaboradores utilizando ArrayList
 
-## Tecnologias Utilizadas
+## 👥 Tipos de Colaboradores
+
+### Funcionário Padrão
+
+Salário Final = Salário Base
+
+### Funcionário Comissionado
+
+Salário Final = Salário Base + Comissão
+
+Comissão:
+
+```text
+Vendas × Percentual ÷ 100
+```
+
+### Funcionário de Produção
+
+Salário Final = Salário Base + Bônus
+
+Bônus:
+
+```text
+Quantidade Produzida × Valor por Peça
+```
+
+## 💰 Salário Base
+
+```text
+R$ 2.000,00
+```
+
+## 🛠 Tecnologias Utilizadas
 
 * Java 21
 * VS Code
 * Git
 * GitHub
 
-## Conceitos Aplicados
+## 🧠 Conceitos Aplicados
 
+* Variáveis e Constantes
 * Classes e Objetos
 * Métodos
 * Construtores
 * Encapsulamento
-* Constantes
 * ArrayList
-* Estruturas Condicionais
-* Estruturas de Repetição
+* Estruturas Condicionais (if, else if e switch)
+* Estruturas de Repetição (for e do-while)
 * Validação de Dados
+* Operações Matemáticas
 
-## Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
 ```text
 FolhaPagamento
@@ -48,11 +82,11 @@ FolhaPagamento
 └── .gitignore
 ```
 
-## Como Executar
+## ▶️ Como Executar
 
 1. Abra o terminal na pasta do projeto.
 
-2. Acesse a pasta src:
+2. Entre na pasta src:
 
 ```bash
 cd src
@@ -70,19 +104,30 @@ javac *.java
 java Main
 ```
 
-## Como Funciona
+## 📋 Como Funciona
 
-O sistema apresenta um menu onde o usuário pode:
+O sistema apresenta um menu interativo com as opções:
 
-1. Cadastrar um Funcionário Padrão
-2. Cadastrar um Funcionário Comissionado
-3. Cadastrar um Funcionário de Produção
-4. Gerar a Folha de Pagamento
+1. Cadastrar Funcionário Padrão
+2. Cadastrar Funcionário Comissionado
+3. Cadastrar Funcionário de Produção
+4. Gerar Folha de Pagamento
+5. Sair
 
-Todos os funcionários são armazenados em uma lista (ArrayList) durante a execução do programa.
+Todos os funcionários são armazenados em um ArrayList durante a execução do programa.
 
-Ao gerar a folha de pagamento, o sistema calcula automaticamente o salário final de cada colaborador de acordo com seu tipo.
+Ao gerar a folha de pagamento, o sistema exibe:
 
-## Autor
+* Total de funcionários cadastrados
+* Nome
+* Matrícula
+* Tipo de funcionário
+* Salário Base
+* Valor de extras
+* Salário Final
+
+## 👨‍💻 Autor
 
 Arthur Araujo Soares
+
+Projeto acadêmico desenvolvido para fins educacionais.
